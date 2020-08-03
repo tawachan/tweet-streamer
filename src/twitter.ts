@@ -17,11 +17,13 @@ export const initialize = () => {
 
   const stream = client.stream("statuses/filter", { track: ENV.KEYWORDS });
   stream.on("data", (tweet: TweetData) => {
-    console.log(tweet.user.screen_name, tweet.entities.hashtags);
     request.postApiTweets({
       tweet_id: tweet.id,
       text: tweet.text,
-      is_reply: tweet.in_reply_to_status_id != null,
+      is_reply: tweet.in_reply_to_status_id_str != null,
+      is_quote: tweet.quote_status != null,
+      is_retweet: tweet.retweeted_status != null,
+      original_tweet_id: tweet.retweeted_status?.id || tweet.quote_status?.id,
       user_id: tweet.user.id,
       user_name: tweet.user.name,
       user_screen_name: tweet.user.screen_name,

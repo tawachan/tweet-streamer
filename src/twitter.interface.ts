@@ -64,12 +64,13 @@ export interface TweetData {
     expanded: string;
     display: string;
   };
-  is_quote_status: boolean;
+  quote_status?: TweetData;
+  retweeted_status?: TweetData;
   extended_tweet: any;
-  quote_count: 0;
-  reply_count: 0;
-  retweet_count: 0;
-  favorite_count: 0;
+  quote_count: number;
+  reply_count: number;
+  retweet_count: number;
+  favorite_count: number;
   entities: {
     hashtags: Array<{ text: string; indices: number[] }>;
     urls: Array<{

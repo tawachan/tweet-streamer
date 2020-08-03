@@ -140,6 +140,24 @@ export interface TweetData {
      * @memberof TweetData
      */
     tweeted_at: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TweetData
+     */
+    is_quote: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TweetData
+     */
+    is_retweet: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof TweetData
+     */
+    original_tweet_id?: number;
 }
 
 /**
