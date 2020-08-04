@@ -37,3 +37,4 @@ lerna-debug.log*
 *.env
 
 Dockerrun.aws.json
+firebase-credential.json
