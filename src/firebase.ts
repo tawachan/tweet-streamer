@@ -4,6 +4,7 @@ import { ENV } from "./env";
 import { TweetData } from "./twitter.interface";
 
 import serviceAccount = require("../firebase-credential.json");
+
 const TWEET_COLLECTION_NAME = "tweets";
 
 const app = admin.initializeApp({
@@ -11,12 +12,14 @@ const app = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as any),
   databaseURL: ENV.FIREBASE_DATABASE_URL,
 });
-const db = app.firestore();
+const firestore = app.firestore();
 
 const appendTweetData = async (data: TweetData) => {
-  await db.collection(TWEET_COLLECTION_NAME).add(data);
+  await firestore.collection(TWEET_COLLECTION_NAME).add(data);
 };
 
 export const firestoreClient = {
   appendTweetData,
+  firestore,
+  TWEET_COLLECTION_NAME,
 };
