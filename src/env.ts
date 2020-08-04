@@ -9,4 +9,5 @@ export const ENV = {
   TWITTER_API_KEY: process.env.TWITTER_API_KEY || "",
   TWITTER_SECRET_KEY: process.env.TWITTER_SECRET_KEY || "",
   KEYWORDS: process.env.KEYWORDS || "",
+  FIREBASE_DATABASE_URL: process.env.FIREBASE_DATABASE_URL || "",
 };

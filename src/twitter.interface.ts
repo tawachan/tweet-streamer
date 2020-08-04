@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface TweetData {
+export interface Tweet {
   created_at: string;
   id: number;
   id_str: string;
@@ -64,8 +64,8 @@ export interface TweetData {
     expanded: string;
     display: string;
   };
-  quote_status?: TweetData;
-  retweeted_status?: TweetData;
+  quote_status?: Tweet;
+  retweeted_status?: Tweet;
   extended_tweet: any;
   quote_count: number;
   reply_count: number;
@@ -88,4 +88,9 @@ export interface TweetData {
   filter_level: string;
   lang: string;
   timestamp_ms: string;
+}
+
+export interface TweetData {
+  tweet: Tweet;
+  keywords: string[];
 }
