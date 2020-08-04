@@ -21,15 +21,14 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts",
-    "start:prod": "node dist/index.js",
-    "format": "eslint --fix 'src/**/*.ts'",
-    "codegen:local": "openapi-generator generate -i http://localhost:5000/apidoc -g typescript-axios -c ./openapi.config.json -o ./src/openapi",
-    "codegen:dev": "openapi-generator generate -i https://hoge.com/apidoc -g typescript-axios -c ./openapi.config.json -o ./src/openapi"
+    "start:prod": "forever start dist/src/index.js",
+    "format": "eslint --fix 'src/**/*.ts'"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "firebase-admin": "^9.0.0",
+    "forever": "^3.0.0",
     "twitter": "^1.7.1"
   }
 }
