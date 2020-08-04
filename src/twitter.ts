@@ -17,6 +17,7 @@ export const initialize = () => {
 
   const stream = client.stream("statuses/filter", { track: ENV.KEYWORDS });
   stream.on("data", async (tweet: Tweet) => {
+    console.log(`tweet: ${tweet.id} ${tweet.user.id} ${tweet.text}`);
     await firestoreClient.appendTweetData({ tweet, keywords: ENV.KEYWORDS.split(",") });
   });
   stream.on("error", (error) => {
