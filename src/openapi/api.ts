@@ -158,6 +158,12 @@ export interface TweetData {
      * @memberof TweetData
      */
     original_tweet_id?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TweetData
+     */
+    keywords: string;
 }
 
 /**

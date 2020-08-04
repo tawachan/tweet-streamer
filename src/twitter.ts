@@ -18,6 +18,7 @@ export const initialize = () => {
   const stream = client.stream("statuses/filter", { track: ENV.KEYWORDS });
   stream.on("data", (tweet: TweetData) => {
     request.postApiTweets({
+      keywords: ENV.KEYWORDS,
       tweet_id: tweet.id,
       text: tweet.text,
       is_reply: tweet.in_reply_to_status_id_str != null,
