@@ -2,7 +2,7 @@
 import * as Twitter from "twitter";
 
 import { ENV } from "./env";
-import { sendBook, sendInitialize } from "./line";
+import { sendBook, sendError, sendInitialize } from "./line";
 import { Tweet } from "./twitter.interface";
 
 export const initialize = async () => {
@@ -20,8 +20,9 @@ export const initialize = async () => {
     console.log(`tweet: ${tweet.id} ${tweet.user.id} ${tweet.text}`);
     await sendBook(tweet);
   });
-  stream.on("error", (error) => {
+  stream.on("error", async (error) => {
     console.log(error);
+    await sendError(error);
   });
   console.log("init");
   await sendInitialize(ENV.KEYWORDS);

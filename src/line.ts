@@ -17,6 +17,15 @@ export const sendBook = async (tweet: Tweet) => {
   ]);
 };
 
+export const sendError = async (error: string) => {
+  await lineClient.broadcast([
+    {
+      type: "text",
+      text: `エラーが発生しました：${error}`,
+    },
+  ]);
+};
+
 export const sendInitialize = async (keyword: string) => {
   await lineClient.broadcast([
     {
