@@ -2,10 +2,10 @@
 import * as Twitter from "twitter";
 
 import { ENV } from "./env";
-import { firestoreClient } from "./firebase";
+import { sendBook, sendInitialize } from "./line";
 import { Tweet } from "./twitter.interface";
 
-export const initialize = () => {
+export const initialize = async () => {
   const cred: Twitter.AccessTokenOptions = {
     consumer_key: ENV.TWITTER_API_KEY!,
     consumer_secret: ENV.TWITTER_SECRET_KEY!,
@@ -18,10 +18,11 @@ export const initialize = () => {
   const stream = client.stream("statuses/filter", { track: ENV.KEYWORDS });
   stream.on("data", async (tweet: Tweet) => {
     console.log(`tweet: ${tweet.id} ${tweet.user.id} ${tweet.text}`);
-    await firestoreClient.appendTweetData({ tweet, keywords: ENV.KEYWORDS.split(",") });
+    await sendBook(tweet);
   });
   stream.on("error", (error) => {
     console.log(error);
   });
   console.log("init");
+  await sendInitialize(ENV.KEYWORDS);
 };

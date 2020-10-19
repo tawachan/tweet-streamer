@@ -25,6 +25,7 @@
     "format": "eslint --fix 'src/**/*.ts'"
   },
   "dependencies": {
+    "@line/bot-sdk": "^7.1.0",
     "axios": "^0.19.2",
     "csv": "^5.3.2",
     "dotenv": "^8.2.0",
