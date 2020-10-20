@@ -22,6 +22,7 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "start:prod": "forever start dist/src/index.js",
+    "stop:prod": "forever stop dist/src/index.js",
     "format": "eslint --fix 'src/**/*.ts'"
   },
   "dependencies": {
