@@ -12,7 +12,7 @@ export const sendBook = async (tweet: Tweet) => {
   await lineClient.broadcast([
     {
       type: "text",
-      text: `良書が見つかりました（from ${tweet.user.screen_name}）\r\n------\r\n${tweet.text}`,
+      text: `見つかりました（from ${tweet.user.screen_name}）\r\n------\r\n${tweet.text}`,
     },
   ]);
 };
